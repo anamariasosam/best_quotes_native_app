@@ -1,8 +1,9 @@
 import React from 'react';
-import { Scene, Router } from 'react-native-router-flux';
+import { Scene, Router, Actions } from 'react-native-router-flux';
 import Event from './components/Event';
 import Home from './components/Home';
 import Quotes from './components/QuotesList';
+import QuoteForm from './components/QuoteForm';
 
 const RouterComponent = () => (
   <Router
@@ -12,7 +13,8 @@ const RouterComponent = () => (
   >
     <Scene key="home" component={Home} title="Events" initial />
     <Scene key="event" component={Event} title="Speakers"  />
-    <Scene key="quotes" component={Quotes} title="Quotes"  />
+    <Scene key="quotes" component={Quotes} title="Quotes" />
+    <Scene key="postQuote" component={QuoteForm} title="New Quote" />
 
   </Router>
 );

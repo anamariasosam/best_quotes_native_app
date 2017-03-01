@@ -11,20 +11,20 @@ import { Actions } from 'react-native-router-flux';
 import Card from './Card';
 import CardSection from './CardSection';
 
-const AuthorDetail = ({ author }) => {
+const SpeakerDetail = ({ speaker }) => {
   const {
     name,
     twitter,
     id,
     description,
-  } = author;
+    image,
+  } = speaker;
 
   const {
     thumbnailStyle,
     thumbnailContainer,
     headerContent,
     headerText,
-    authorImage,
   } = styles;
 
   const goToQuotes= () => Actions.quotes({ id });
@@ -34,8 +34,9 @@ const AuthorDetail = ({ author }) => {
       <CardSection>
         <View style={thumbnailContainer}>
           <Image
-            source={require(`../images/author.png`)}
+            source={{ uri: image, cache: 'only-if-cached' }}
             style={thumbnailStyle}
+
           />
         </View>
         <View style={headerContent}>
@@ -56,13 +57,14 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-around',
     marginLeft: 10,
+    marginRight: 70
   },
   headerText: {
     fontSize: 18,
   },
   thumbnailStyle: {
-    height: 50,
-    width: 50,
+    height: 55,
+    width: 55,
   },
   thumbnailContainer: {
     justifyContent: 'center',
@@ -70,12 +72,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
   },
-  authorImage: {
-    height: 300,
-    width: null,
-    flex: 1,
-  }
 });
 
 
-export default AuthorDetail;
+export default SpeakerDetail;

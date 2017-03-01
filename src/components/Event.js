@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import {
   ScrollView,
 } from 'react-native';
-import AuthorDetail from './AuthorDetail';
+import SpeakerDetail from './SpeakerDetail';
 
 class Event extends Component {
   constructor() {
     super();
     this.state = {
-      authors: [],
+      speakers: [],
     };
   }
 
@@ -23,21 +23,21 @@ class Event extends Component {
           // Examine the text in the response
           response
           .json()
-          .then(res => this.setState({ authors: res.authors }));
+          .then(res => this.setState({ speakers: res.speakers }));
         }
       )
       .catch(err => console.log('Fetch Error :-S', err));
   }
 
-  renderAuthors() {
-    return this.state.authors
-      .map(author => <AuthorDetail key={author.id} author={author} />);
+  renderSpeakers() {
+    return this.state.speakers
+      .map(speaker => <SpeakerDetail key={speaker.id} speaker={speaker} />);
   }
 
   render() {
     return (
       <ScrollView>
-        { this.renderAuthors() }
+        { this.renderSpeakers() }
       </ScrollView>
     );
   }

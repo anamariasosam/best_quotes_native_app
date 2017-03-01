@@ -17,7 +17,8 @@ const EventDetail = ({ event }) => {
     id,
     name,
     city,
-    country
+    country,
+    image,
   } = event;
 
   const {
@@ -37,8 +38,9 @@ const EventDetail = ({ event }) => {
         <CardSection>
           <View style={thumbnailContainer}>
             <Image
-              source={require(`../images/event.png`)}
+              source={{ uri: image, cache: 'only-if-cached' }}
               style={thumbnailStyle}
+
             />
           </View>
           <View style={headerContent}>
@@ -61,19 +63,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   thumbnailStyle: {
-    height: 50,
-    width: 50,
+    height: 55,
+    width: 55
   },
   thumbnailContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 10,
     marginRight: 10,
-  },
-  productImage: {
-    height: 300,
-    width: null,
-    flex: 1,
   }
 });
 

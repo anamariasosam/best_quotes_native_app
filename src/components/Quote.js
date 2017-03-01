@@ -18,21 +18,18 @@ import CardSection from './CardSection';
 const Quote = ({ quote }) => {
   const {
     description,
+    speaker_twitter,
   } = quote;
 
   const {
-    thumbnailStyle,
     thumbnailContainer,
     headerContent,
     headerText,
-    authorImage,
   } = styles;
 
   const tweetQuote = () => {
     shareOnTwitter({
-        'text':'Global democratized marketplace for art',
-        'link':'https://artboost.com/',
-        'imagelink':'https://artboost.com/apple-touch-icon-144x144.png',
+        'text': `"${description}" - @${speaker_twitter}`
       },
       (results) => {
         console.log(results);
@@ -45,13 +42,12 @@ const Quote = ({ quote }) => {
       <CardSection>
         <View style={headerContent}>
           <Text style={headerText}>{ description }</Text>
-            <Button
-              onPress={tweetQuote}
-              title="Tweet"
-            />
         </View>
-
       </CardSection>
+      <Button
+        onPress={tweetQuote}
+        title="Tweet"
+      />
     </Card>
   );
 };
@@ -63,22 +59,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   headerText: {
-    fontSize: 18,
-  },
-  thumbnailStyle: {
-    height: 50,
-    width: 50,
-  },
-  thumbnailContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-  },
-  authorImage: {
-    height: 300,
-    width: null,
-    flex: 1,
+    fontSize: 16,
+    fontStyle: 'italic'
   }
 });
 
