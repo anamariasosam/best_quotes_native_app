@@ -16,8 +16,6 @@ class QuotesList extends Component {
       speaker: props.id,
     };
 
-    console.log(`📥📥📥📥 ${props.speaker_updated_id}`);
-
     this.postNewQuote = this.postNewQuote.bind(this);
   }
 
@@ -29,7 +27,6 @@ class QuotesList extends Component {
             console.log(`like there was a problem. Status Code:${response.status}`);
             return;
           }
-          // Examine the text in the response
           response
           .json()
           .then(res => {
@@ -52,11 +49,11 @@ class QuotesList extends Component {
   render() {
     return (
       <ScrollView>
+        { this.renderQuotes() }
         <Button
           onPress={this.postNewQuote}
-          title="New"
+          title="New Quote"
         />
-        { this.renderQuotes() }
       </ScrollView>
     );
   }
